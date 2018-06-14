@@ -1,0 +1,35 @@
+package dam.psp;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.Socket;
+import java.nio.CharBuffer;
+
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
+
+public class ClienteSSL {
+
+	static String FORMAT = "utf-8";
+	static String SERVIDOR = "localhost";
+	static int PUERTO = 5555;
+	public static void main(String[] args) {
+		try {
+			SSLSocketFactory socketCLIFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
+			SSLSocket socket = (SSLSocket) socketCLIFactory.createSocket(SERVIDOR, PUERTO);
+			
+			String mensaje = null;
+			PrintWriter pw = new PrintWriter(new BufferedOutputStream(socketCLI.getOutputStream()));
+			InputStreamReader in = new InputStreamReader(System.in, FORMAT);
+			BufferedReader br = new BufferedReader(in);
+			System.out.println("Escriba el mensaje: ");
+			mensaje=br.readLine();
+			System.out.println("El mensaje que ha escrito es: "+mensaje);	
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

@@ -1,0 +1,35 @@
+package dam.psp;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.Socket;
+
+public class ClienteSSL {
+
+	static String FORMAT = "utf-8";
+	static int PUERTO = 5555;
+	public static void main(String[] args) {
+		try {
+			String mensaje = null;
+			InputStreamReader in = new InputStreamReader(System.in, FORMAT);
+			BufferedReader br = new BufferedReader(in);
+			System.out.println("Escriba el mensaje: ");
+			mensaje=br.readLine();
+			System.out.println("El mensaje que ha escrito es: "+mensaje);
+			Socket socket = new Socket("localhost", PUERTO);
+			OutputStreamWriter out = new OutputStreamWriter(socket.getOutputStream(), FORMAT);
+			out.write(mensaje);
+			
+			String mensajeInvertido = null;
+			System.out.println("El mensaje devuelto es: "+mensajeInvertido);
+			
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;com.egb.comudp.SrvEspejo.tratarMensaje(...)&apos; to &apos;convertirMensaje&apos;&#x0A;- Original project: &apos;ComUDP&apos;&#x0A;- Original element: &apos;com.egb.comudp.SrvEspejo.tratarMensaje(...)&apos;&#x0A;- Renamed element: &apos;com.egb.comudp.SrvEspejo.convertirMensaje(...)&apos;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;tratarMensaje&apos;" flags="589826" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;com.egb.comudp{SrvEspejo.java[SrvEspejo~tratarMensaje~QString;" name="convertirMensaje" references="true" stamp="1520426581040" version="1.0"/>
+</session>

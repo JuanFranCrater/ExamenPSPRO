@@ -1,0 +1,39 @@
+package dam.psp;
+
+public class Consumidor extends Thread {
+	
+	private Productor pro;
+	public Consumidor(Productor pro) {
+		this.pro=pro;
+	}
+	
+	@Override
+	public void run() {
+		while(true)
+		{
+			try {
+				//Thread.sleep(3000);
+				System.out.println(pro.leerMensaje());
+				
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public static void main(String[] args) {
+		Productor pro = new Productor();
+		Consumidor con=new Consumidor(pro);
+		pro.start();
+		con.start();
+		try {
+			pro.join();
+			con.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+}

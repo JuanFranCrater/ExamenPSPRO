@@ -1,0 +1,15 @@
+package dam.psp;
+
+public class Consumidor extends Thread {
+	public Consumidor(Productor pro) {
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public void run() {
+		
+	}
+	public static void main(String[] args) {
+		Productor pro = new Productor();
+		new Consumidor(pro);
+	}
+}

@@ -1,0 +1,77 @@
+package dam.psp;
+
+import java.util.ArrayList;
+import java.util.Date;
+
+public class Productor extends Thread {
+
+	private ArrayList<String> mensajes;
+	private int COLAMAXIMA = 5;
+	
+	public Productor()
+	{
+		mensajes= new ArrayList<String>();
+	}
+	
+	@Override
+	public void run() {
+		while(true)
+		{
+			try {
+				Thread.sleep(3000);
+				escribirMensaje();
+				
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	public synchronized String leerMensaje()
+	{
+		String mensaje = null;
+		if(mensajes.size()!=0)
+		{
+				mensaje = mensajes.get(0);
+				mensajes.remove(0);
+				notifyAll();	
+	    }else
+			{
+				try {
+					System.out.println("Esperando a llenado de fechas");
+					System.out.println();
+					wait();
+					System.out.println("Despertado Consumidor");
+					System.out.println(0);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		}
+		return mensaje;
+	}
+	private synchronized void escribirMensaje()
+	{
+		Date date = new Date();
+		if(mensajes.size()==COLAMAXIMA)
+		{
+		try {
+			System.out.println("Esperando a vaciado de fechas");
+			System.out.println();
+			wait();
+			System.out.println("Despertado Productor");
+			System.out.println(0);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			mensajes.add(date.toString());
+			System.out.println("Nueva fecha emitida: "+date.toString());
+			System.out.println("Numero de fechas en lista: "+mensajes.size());
+			System.out.println();
+		notifyAll();
+	}
+
+	}
+	}

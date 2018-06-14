@@ -1,0 +1,40 @@
+package dam.psp;
+
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import javax.net.ssl.SSLSocket;
+
+public class ServidorSSL {
+	
+	static int PUERTO=5555;
+	static String FORMAT = "utf-8";
+	
+	public static void main(String[] args) {
+	}
+	
+	public class ServidorThread extends Thread
+	{
+		SSLSocket socket;
+		public ServidorThread(SSLSocket socket)
+		{
+			this.socket=socket;
+		}
+		@Override
+		public void run() {
+			InputStreamReader input;
+			try {
+				input =new InputStreamReader(socket.getInputStream(),FORMAT);
+				String mensaje = null;
+				String mensajeReves = MyReverse(mensaje);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	private String MyReverse(String mensaje) {
+		return new StringBuilder(mensaje).reverse().toString().toUpperCase();
+		
+	}
+}

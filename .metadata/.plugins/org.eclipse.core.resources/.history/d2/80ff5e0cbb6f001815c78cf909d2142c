@@ -1,0 +1,31 @@
+package dam.psp;
+
+import javax.net.ssl.SSLSocket;
+
+public class ServidorSSL {
+	
+	static int PUERTO=5555;
+	static String FORMAT = "utf-8";
+	
+	public static void main(String[] args) {
+	}
+	
+	public class ServidorThread extends Thread
+	{
+		SSLSocket socket;
+		public ServidorThread(SSLSocket socket)
+		{
+			this.socket=socket;
+		}
+		@Override
+		public void run() {
+			InputStreamReader input;
+			String mensaje = null;
+			String mensajeReves = MyReverse(mensaje);
+		}
+	}
+	private String MyReverse(String mensaje) {
+		return new StringBuilder(mensaje).reverse().toString().toUpperCase();
+		
+	}
+}
